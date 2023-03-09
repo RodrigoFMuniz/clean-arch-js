@@ -1,3 +1,5 @@
-function t(){
-    return  "teste" ;
+function t () {
+  return 'teste'; 
+  
 }
+
