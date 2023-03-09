@@ -1,3 +1,3 @@
 # Clean Archtecture
 
-## Iniciando os estudos em clean code 
+## Iniciando os estudos em clean archtecture
