@@ -1,3 +1,3 @@
 function t(){
-    return  "teste"
+    return  "teste" ;
 }
