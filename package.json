@@ -7,6 +7,11 @@
     "test": "jest",
     "lint:std": "npx standard --fix"
   },
+  "husky":{
+    "hooks": {
+        "pre-commit": "lint-staged"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
