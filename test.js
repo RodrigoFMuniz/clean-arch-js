@@ -1,5 +1,5 @@
 function a () {
-  return "ff"
+  return "ff" ;
 }
 
 a()
