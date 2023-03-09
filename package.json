@@ -7,16 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:std": "npx standard --fix"
   },
-  "lint-staged": {
-    "*.js": [
-      "standard --fix"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
