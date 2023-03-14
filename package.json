@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:std": "jest --watchAll",
     "lint:std": "npx standard --fix"
   },
   "standard": {
