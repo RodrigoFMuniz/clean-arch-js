@@ -20,6 +20,7 @@ class ExpressRouterAdapter {
   }
 }
 
+// Presentation layer - o que a api expõe para o client - rotas
 // signup - router receive a httpReq and return a httpResponse object
 class SignUpRouter {
   async route (httpRequest) {
@@ -32,6 +33,7 @@ class SignUpRouter {
   }
 }
 
+// Domain layer - Use cases - Regras de negócio
 // signup user case - business rules
 class SignUpUseCase {
   async signUp (email, password, repeatPassword) {
@@ -41,6 +43,7 @@ class SignUpUseCase {
   }
 }
 
+// Infra layer
 // add-account-repository
 const mongoose = require('mongoose')
 const AccountModel = mongoose.model('Account')
