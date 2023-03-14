@@ -1,20 +1,38 @@
 
+// const express = require('express')
+// const router = express.Router()
+
 module.exports = () => {
-  router.post('/signup', new SignUpRouter().route)
+  const router = new SignUpRouter()
+  router.post('/signup', ExpressRouterAdapter.adapt(router))
 }
 
-const express = require('express')
-const router = express.Router()
-
-class SignUpRouter {
-  async route (req, res) {
-    const { email, password, repeatPassword } = req.body
-    new SignUpUseCase().signUp(email, password, repeatPassword)
-
-    res.status(400).json({ error: 'Password didn\'t match' })
+// Framework adapter
+class ExpressRouterAdapter {
+  static adapt (router) {
+    return async (req, res) => {
+      const httpRequest = {
+        body: req.body
+      }
+      const httpResponse = router.route(httpRequest)
+      res.status(httpResponse.statuscode).json(httpResponse.body)
+    }
   }
 }
 
+// signup - router receive a httpReq and return a httpResponse object
+class SignUpRouter {
+  async route (httpRequest) {
+    const { email, password, repeatPassword } = httpRequest.body
+    const user = new SignUpUseCase().signUp(email, password, repeatPassword)
+    return {
+      statuscode: 200,
+      body: user
+    }
+  }
+}
+
+// signup user case - business rules
 class SignUpUseCase {
   async signUp (email, password, repeatPassword) {
     if (password === repeatPassword) {
@@ -23,6 +41,7 @@ class SignUpUseCase {
   }
 }
 
+// add-account-repository
 const mongoose = require('mongoose')
 const AccountModel = mongoose.model('Account')
 
