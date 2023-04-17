@@ -20,6 +20,7 @@ describe('Login Router', () => {
         email: 'email@email.com'
       }
     }
+
     const httpResponse = sut.route(httpRequest)
     expect(httpResponse.statusCode).toBe(400)
     expect(httpResponse.body).toEqual(new MissingParamError('password'))
